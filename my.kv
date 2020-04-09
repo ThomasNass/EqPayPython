@@ -1,0 +1,40 @@
+Calculator:
+
+	GridLayout:
+		rows: 4
+		columns: 3
+		Label:
+			text: 'Enter your income'
+
+		TextInput:
+			id: income
+			multiline: False
+			input_type: 'number'
+			input_filter: 'float'
+
+		Label:
+			text: 'Enter your partners income'
+
+		TextInput:
+			id: partner
+			multiline: False
+			input_type: 'number'
+			input_filter: 'float'
+
+		Label:
+			text: 'Enter your expenses'
+
+		TextInput:
+			id: expenses
+			multiline: False
+			input_type: 'number'
+			input_filter: 'float'
+
+
+		Button:
+			text: 'Calculate'
+			on_release: root.calculate()
+
+		Button:
+			text: 'Clear'
+			on_release: root.clear()

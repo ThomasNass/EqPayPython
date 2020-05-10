@@ -9,8 +9,10 @@ Calculator:
 		TextInput:
 			id: income
 			multiline: False
+			write_tab: False
 			input_type: 'number'
 			input_filter: 'float'
+
 
 		Label:
 			text: 'Enter your partners income'
@@ -18,17 +20,18 @@ Calculator:
 		TextInput:
 			id: partner
 			multiline: False
+			write_tab: False
 			input_type: 'number'
 			input_filter: 'float'
 
 		Label:
-			text: 'Enter your expenses'
+			text: 'Enter your expenses.\nYou can add expenses together using "+"\nExample: 5+5+5+5'
 
 		TextInput:
 			id: expenses
 			multiline: False
-			input_type: 'number'
-			input_filter: 'float'
+			write_tab: False
+
 
 
 		Button:

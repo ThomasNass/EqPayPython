@@ -13,27 +13,39 @@ class Calculator(Screen):
     def calculate(self):
         income = int(self.ids.income.text)
         partner = int(self.ids.partner.text)
-        expenses = int(self.ids.expenses.text)
+        expenses = str(self.ids.expenses.text)
 
-        if income and partner and expenses == int or float:
+        if expenses == float or "+":
 
-            joint_expenditure = (income + partner)
-            your_percentage = (income / joint_expenditure)
-            partner_percentage = (partner / joint_expenditure)
+            expenses_list = expenses.split("+")
 
-            you_pay = round((your_percentage * expenses))
-            partner_pay = round((partner_percentage * expenses))
+            li = []
+            for i in expenses_list:
+                li.append(int(i))
+            expenses_total = sum(li)
 
-            popup = Popup(
-                title='Results',
-                content=Label
-                (text=
-                 "Your share of the expenses is: " + str(you_pay) +
-                 "\nYour partner's is: " + str(partner_pay)))
-            popup.open()
+            if income and partner and expenses_total == int or float:
+                joint_expenditure = (income + partner)
+                your_percentage = (income / joint_expenditure)
+                partner_percentage = (partner / joint_expenditure)
 
+                you_pay = round((your_percentage * expenses_total))
+                partner_pay = round((partner_percentage * expenses_total))
+
+                popup = Popup(
+                    title='Results',
+                    content=Label
+                    (text=
+                     "Your share of the expenses is: " + str(you_pay) +
+                     "\nYour partner's is: " + str(partner_pay)))
+                popup.open()
         else:
-            self.ids.results.text += "An error occurred. Please try again."
+            popup = Popup(
+                title='Error',
+                content=Label
+                (text="You've entered invalid information in the expenses tab. Only '+' and numbers are allowed "
+                 ))
+            popup.open()
 
     def clear(self):
         self.ids.partner.text = ""
